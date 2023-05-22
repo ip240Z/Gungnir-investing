@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import TickerSearchForm from './components/TickerSearchForm';
-import Chart from './components/Chart';
+import StockBody from './components/StockBody';
 
 function App() {
   return (
     <div className="App">
-      <Chart />
+      <StockBody />
     </div>
   );
 }

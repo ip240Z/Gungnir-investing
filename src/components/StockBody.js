@@ -1,20 +1,21 @@
 import TickerSearchForm from "./TickerSearchForm"
 import React, { useState } from "react";
+import "./StockBody.css"
 
-let Chart = (props) => {
+let StockBody = (props) => {
 
     const [searchedTicker, setSearchedTicker] = useState("")
 
     return (
-        <section>
+        <section className="mainRenderArea">
             <header>
                 <h4>{searchedTicker}</h4>
+                <TickerSearchForm passTicker={setSearchedTicker}/>
             </header>
             <article>
-                <TickerSearchForm passTicker={setSearchedTicker}/>
             </article>
         </section>
     )
 }
 
-export default Chart;
+export default StockBody;

@@ -1,3 +1,5 @@
 .searchForm {
     background-color: lightgreen;
+    display: flex;
+    border: 1px solid black;
 }

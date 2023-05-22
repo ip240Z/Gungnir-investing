@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import {APIKEY, StockDataAPIKEY} from "../APIKEY";
 import "./TickerSearchForm.css"
+// require('dotenv').config()
+
 
 
 let TickerSearchForm = (props) => {
 
-    const [ticker, setTicker] = useState({tickerValue: "TSLA"})
+    let APIKEY = process.env.REACT_APP_APIKEY
+
+    const [ticker, setTicker] = useState({tickerValue: ""})
 
     const passTicker = (data) => {
         props.passTicker(data)
@@ -26,14 +30,16 @@ let TickerSearchForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        getTickerData(ticker.tickerValue);
-        console.log(ticker.tickerValue);
-        passTicker(ticker.tickerValue);
+        let tickerValue = ticker.tickerValue.toUpperCase()
+        getTickerData(tickerValue);
+        console.log(tickerValue);
+        passTicker(tickerValue);
+        setTicker({tickerValue: ""})
     }
     return (
         <form className="searchForm" onSubmit={handleSubmit}>
             <div>
-                <input type="text" name="TickerSearch" placeholder="Search by ticker" value={ticker.tickerValue.toUpperCase()} onChange={handleChange} />
+                <input type="text" name="TickerSearch" placeholder="Search by ticker" value={ticker.tickerValue} onChange={handleChange} />
             </div>
             <button>Search</button>
         </form>
