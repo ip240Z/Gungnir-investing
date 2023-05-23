@@ -1,9 +1,5 @@
 import React, { useEffect, useState, Component } from "react";
-import {APIKEY, StockDataAPIKEY} from "../APIKEY";
-import "./TickerSearchForm.css"
-// require('dotenv').config()
-
-
+import { Link, Route, Routes } from "react-router-dom";
 
 let TickerSearchForm = (props) => {
 
@@ -11,17 +7,26 @@ let TickerSearchForm = (props) => {
 
     const [ticker, setTicker] = useState({tickerValue: ""})
 
-    const passTicker = (data) => {
-        props.passTicker(data)
+    const [chartData, setChartData] = useState()
+
+    const passTicker = (symbol) => {
+        props.passTicker(symbol)
+    }
+
+    const passChartData = (data) => {
+        props.passChartData(data)
     }
 
     let getTickerData = (ticker) => {
-        return (fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=60min&slice=year1month3&adjusted=false&outputsize=compact&apikey=${APIKEY}`)
+        return (
+            fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=60min&slice=year1month3&adjusted=false&outputsize=compact&apikey=${APIKEY}`)
             .then(r => r.ok ? r.json() : null)
             .then(data => {
+            setChartData(data)
             console.log(data)
-            }));   
-        }
+            })
+        );   
+    }
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -29,20 +34,25 @@ let TickerSearchForm = (props) => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        let tickerValue = ticker.tickerValue.toUpperCase()
-        getTickerData(tickerValue);
-        console.log(tickerValue);
-        passTicker(tickerValue);
-        setTicker({tickerValue: ""})
+            e.preventDefault();
+            let tickerValue = ticker.tickerValue.toUpperCase()
+            getTickerData(tickerValue);
+            passTicker(tickerValue);
+            passChartData(chartData)
+            console.log(chartData)
+            setTicker({tickerValue: ""});
     }
+
     return (
-        <form className="searchForm" onSubmit={handleSubmit}>
-            <div>
-                <input type="text" name="TickerSearch" placeholder="Search by ticker" value={ticker.tickerValue} onChange={handleChange} />
-            </div>
-            <button>Search</button>
-        </form>
+        <section>
+            <form className="searchForm" onSubmit={handleSubmit}>
+                <div>
+                    <input type="text" name="TickerSearch" placeholder="Search by ticker" value={ticker.tickerValue} onChange={handleChange} />
+                </div>
+                
+                <button to={`/chart/${ticker.tickerValue}`}>Search</button>
+            </form>
+        </section>
     )
 };
 

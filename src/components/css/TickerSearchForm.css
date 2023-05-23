@@ -2,4 +2,6 @@
     background-color: lightgreen;
     display: flex;
     border: 1px solid black;
+    justify-content: center;
+    padding: 5px;
 }

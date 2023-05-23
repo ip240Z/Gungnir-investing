@@ -1,0 +1,23 @@
+.mainRenderArea {
+    border: 1px solid blue;
+    padding: 10px;
+}
+
+.navBtnWrapper {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+    align-items: center;
+}
+.navLink {
+    padding: 5px;
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.tickerDisplay {
+    min-width: 50px;
+    border: 1px solid grey;
+    padding: 5px;
+}
