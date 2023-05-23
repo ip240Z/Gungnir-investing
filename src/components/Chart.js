@@ -26,9 +26,10 @@ let TickerChart = (props) => {
 
     return (
         <div>
-
+          Stong go up, but also down, but maybe back up
         </div>
     )
 
 }
 
+export default TickerChart

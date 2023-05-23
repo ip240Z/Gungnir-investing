@@ -5,19 +5,27 @@
 
 .navBtnWrapper {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 10px;
     margin-top: 5px;
     align-items: center;
+
 }
 .navLink {
     padding: 5px;
     text-decoration: none;
     background-color: white;
     border: 1px solid black;
+    border-radius: 5px;
+    color: black;
 }
 
 .tickerDisplay {
     min-width: 50px;
+    border-radius: 2px;
+    font-weight: bolder;
+    color: black;
     border: 1px solid grey;
+    background-color: white;
     padding: 5px;
 }

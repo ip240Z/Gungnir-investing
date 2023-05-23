@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "./css/StockBody.css"
 import "./css/TickerSearchForm.css"
 import { Link, Route, Routes } from "react-router-dom";
+import TickerChart from "./Chart";
 
 let StockBody = () => {
 
@@ -12,6 +13,9 @@ let StockBody = () => {
     const [tickerNewsData, setTickerNews] = useState();
 
     const [chartData, setChartData] = useState();
+
+    console.log(chartData)
+    console.log(tickerName)
 
     return (
         <section className="mainRenderArea">
@@ -28,13 +32,11 @@ let StockBody = () => {
                 </nav>
             </header>
             <article>
-                <Routes>
-                    
-                    {/* <Route
+                <Routes>    
+                    <Route
                     path={`/chart/${tickerName}`}
-                    element={<Chart />} 
-                    /> */}
-
+                    element={<TickerChart />} 
+                    />
                     <Route
                     path={`/news/${tickerName}`}
                     element={<ArticleSection tickerNewsData={tickerNewsData} tickerName={tickerName} passTickerNews={setTickerNews} />} 

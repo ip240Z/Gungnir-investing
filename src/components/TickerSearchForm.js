@@ -5,6 +5,8 @@ let TickerSearchForm = (props) => {
 
     let APIKEY = process.env.REACT_APP_APIKEY
 
+    let APIKEY2 = process.env.REACT_APP_APIKEY2
+
     const [ticker, setTicker] = useState({tickerValue: ""})
 
     const [chartData, setChartData] = useState()
@@ -19,11 +21,12 @@ let TickerSearchForm = (props) => {
 
     let getTickerData = (ticker) => {
         return (
-            fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=60min&slice=year1month3&adjusted=false&outputsize=compact&apikey=${APIKEY}`)
+            fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=60min&slice=year1month3&adjusted=false&outputsize=compact&apikey=${APIKEY2}`)
             .then(r => r.ok ? r.json() : null)
             .then(data => {
-            setChartData(data)
-            console.log(data)
+                console.log("Fetched chart data")
+            setChartData(data);
+            passChartData(chartData);
             })
         );   
     }
@@ -38,8 +41,6 @@ let TickerSearchForm = (props) => {
             let tickerValue = ticker.tickerValue.toUpperCase()
             getTickerData(tickerValue);
             passTicker(tickerValue);
-            passChartData(chartData)
-            console.log(chartData)
             setTicker({tickerValue: ""});
     }
 
