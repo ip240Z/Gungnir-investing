@@ -9,6 +9,7 @@
     width: 100%;
     max-width: 350px;
     height: 65%;
+    overflow: auto;
 }
 
 .imgWrapper {

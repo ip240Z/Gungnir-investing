@@ -19,17 +19,21 @@ let TickerSearchForm = (props) => {
         props.passChartData(data)
     }
 
-    let getTickerData = (ticker) => {
-        return (
-            fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=60min&slice=year1month3&adjusted=false&outputsize=compact&apikey=${APIKEY2}`)
-            .then(r => r.ok ? r.json() : null)
-            .then(data => {
-                console.log("Fetched chart data")
-            setChartData(data);
-            passChartData(chartData);
-            })
-        );   
-    }
+    let getTickerData = async (ticker) => {
+        try {
+          const response = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=60min&slice=year1month3&adjusted=false&outputsize=compact&apikey=${APIKEY}`);
+          if (!response.ok) {
+            throw new Error('Error fetching ticker data');
+          }
+          const data = await response.json();
+          console.log('Fetched chart data:', data);
+          setChartData(data);
+          passChartData(chartData);
+        } catch (error) {
+          console.error('An error occurred:', error);
+        }
+      };
+      
 
     const handleChange = (e) => {
         e.preventDefault();

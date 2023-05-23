@@ -18,14 +18,23 @@ let ArticleSection = (props) => {
     };
 
     useEffect(() => {
-        fetch(`https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${tickerName}&apikey=${APIKEY2}`)
-        .then(r => r.ok ? r.json() : null)
-        .then(data => {
-            console.log("News articles fetched")
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${tickerName}&apikey=${APIKEY}`)
+            if (!response.ok) {
+                throw new Error('Error fetching news articles')
+            }
+            const data = await response.json();
+            console.log('News articles fetched', data);
             setTickerNewsData(data.feed)
-            passTickerNews(data)
-        })
-    },[])
+            passTickerNews(data);
+        } catch (error) {
+            console.log('An error occurred: ', error)
+        }
+    }
+    fetchData()
+    }, []); 
+        
 
     let relevantArticles = tickerNewsData.map((article) => {
         const { ticker_sentiment: tickerSentiments} = article;
