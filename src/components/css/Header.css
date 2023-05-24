@@ -1,0 +1,14 @@
+.headerWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.logoWrapper {
+    display: inline-block;
+}
+
+.logo{
+    max-width: 150px;
+    margin-bottom: -50px;
+}

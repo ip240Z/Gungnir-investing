@@ -1,6 +1,7 @@
 import NewsArticle from "./NewsArticle"
 import React, { useEffect, useState } from "react";
 import "./css/ArticleSection.css"
+import FeaturedArticle from "./FeaturedArticle";
 
 let ArticleSection = (props) => {
 
@@ -20,14 +21,14 @@ let ArticleSection = (props) => {
     useEffect(() => {
     const fetchData = async () => {
         try {
-            const response = await fetch(`https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${tickerName}&apikey=${APIKEY}`)
+            const response = await fetch(`https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${tickerName}&apikey=${APIKEY2}`)
             if (!response.ok) {
                 throw new Error('Error fetching news articles')
             }
             const data = await response.json();
             console.log('News articles fetched', data);
             setTickerNewsData(data.feed)
-            passTickerNews(data);
+            passTickerNews(data.feed);
         } catch (error) {
             console.log('An error occurred: ', error)
         }
@@ -39,7 +40,7 @@ let ArticleSection = (props) => {
     let relevantArticles = tickerNewsData.map((article) => {
         const { ticker_sentiment: tickerSentiments} = article;
         const relevantSentiment = tickerSentiments.find((sentiment) => 
-            sentiment.ticker === tickerName && parseFloat(sentiment.relevance_score) > .6
+            sentiment.ticker === tickerName && parseFloat(sentiment.relevance_score) > .5
         );
 
         if (relevantSentiment) {
@@ -48,13 +49,22 @@ let ArticleSection = (props) => {
         return null;
     }).filter(Boolean);
 
+    let featuredArticles = relevantArticles.sort((a,b) => b.relevant_sentiment.relevance_score - a.relevant_sentiment.relevance_score).splice(0,3);
+    
+
     return (
-        <section>
-            <header>Related articles for {tickerName}</header>
-            <section className="articleSectionWrapper">
-                {tickerName[0] ? relevantArticles.map((articleData, index) => <NewsArticle data={articleData} key={index} />) : `Please search a ticker first.`}
+        <main className="articleSectionWrapper">
+            <section className="featuredArticles">
+                {tickerName[0] ? featuredArticles.map((articleData, index) => <FeaturedArticle data={articleData} key={index + "f"} />) : ""}
             </section>
-        </section>
+
+            <section>
+                <h3>Related articles for {tickerName}</h3>
+                <section className="relatedArticleWrapper">
+                    {tickerName[0] ? relevantArticles.map((articleData, index) => <NewsArticle data={articleData} key={index} />) : `Please search a ticker first.`}
+                </section>
+            </section>
+        </main>
     )
 }
 

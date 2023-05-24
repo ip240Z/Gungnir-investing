@@ -3,11 +3,11 @@
     flex-direction: column;
     border-radius: 5px;
     border: 3px solid ;
-    background-color: darkgoldenrod;
+    background-color: rgba(211, 211, 211, 0.383);
     padding: 5px;
     gap: 5px;
     width: 100%;
-    max-width: 350px;
+    max-width: 200px;
     height: 65%;
     overflow: auto;
 }
@@ -17,7 +17,6 @@
     height: 80%;
     display: flex;
     justify-content: center;
-    border: 2px solid black;
 }
 
 .titleWrapper {
@@ -41,6 +40,7 @@
 .summaryWrapper {
     width: 95%;
     padding: 5px;
+    height: min-content;
     border: 2px solid rgba(0, 0, 0, 0.585);
     border-radius: 10px;
     color: black;
@@ -48,7 +48,7 @@
 }
 
 .artSummary {
-    max-height: 30%;
+    font-weight: bold;
 }
 
 .artInfo {
@@ -59,4 +59,17 @@
     border: 1px solid black;
     border-radius: 5px;
     padding: 3px;
+    margin:0;
+}
+.artDate {
+    border-top: 1px solid black;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 0;
+    margin-top: 2px;
+    
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    width:fit-content;
 }

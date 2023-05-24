@@ -19,18 +19,27 @@ let TickerSearchForm = (props) => {
         props.passChartData(data)
     }
 
-    let getTickerData = async (ticker) => {
+
+    useEffect(() => {
+        if (chartData) {
+          console.log("Updated chart data:", chartData);
+          passChartData(chartData);
+        }
+      }, [chartData]);
+    
+      let getTickerData = async (ticker) => {
         try {
-          const response = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=60min&slice=year1month3&adjusted=false&outputsize=compact&apikey=${APIKEY}`);
+          const response = await fetch(
+            `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=30min&slice=year1month6&outputsize=full&adjusted=false&apikey=${APIKEY}`
+          );
           if (!response.ok) {
-            throw new Error('Error fetching ticker data');
+            throw new Error("Error fetching ticker data");
           }
           const data = await response.json();
-          console.log('Fetched chart data:', data);
+          console.log("Fetched chart data:", data);
           setChartData(data);
-          passChartData(chartData);
         } catch (error) {
-          console.error('An error occurred:', error);
+          console.error("An error occurred:", error);
         }
       };
       
@@ -52,7 +61,13 @@ let TickerSearchForm = (props) => {
         <section>
             <form className="searchForm" onSubmit={handleSubmit}>
                 <div>
-                    <input type="text" name="TickerSearch" placeholder="Search by ticker" value={ticker.tickerValue} onChange={handleChange} />
+                    <input 
+                    type="text" 
+                    name="TickerSearch" 
+                    placeholder="Search by ticker" 
+                    value={ticker.tickerValue} 
+                    onChange={handleChange} 
+                    />
                 </div>
                 
                 <button to={`/chart/${ticker.tickerValue}`}>Search</button>
