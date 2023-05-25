@@ -20,7 +20,7 @@ let ChartComponent = ({chartData}) => {
   const options = {
     chart: {
       type: 'candlestick',
-      height: 350,
+      height: 400,
     },
     plotOptions: {
       candlestick: {
@@ -53,7 +53,7 @@ let ChartComponent = ({chartData}) => {
         options={options}
         series={options.series}
         type='candlestick'
-        height={350} 
+        height={400} 
         />
       </div>
     );

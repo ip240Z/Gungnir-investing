@@ -30,7 +30,7 @@ let TickerSearchForm = (props) => {
       let getTickerData = async (ticker) => {
         try {
           const response = await fetch(
-            `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=30min&slice=year1month6&outputsize=full&adjusted=false&apikey=${APIKEY}`
+            `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=30min&slice=year1month3&outputsize=full&adjusted=false&apikey=${APIKEY}`
           );
           if (!response.ok) {
             throw new Error("Error fetching ticker data");
