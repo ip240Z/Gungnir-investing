@@ -5,8 +5,6 @@ import FeaturedArticle from "./FeaturedArticle";
 
 let ArticleSection = (props) => {
 
-    let APIKEY = process.env.REACT_APP_APIKEY
-
     let APIKEY2 = process.env.REACT_APP_APIKEY2
 
 
@@ -40,7 +38,7 @@ let ArticleSection = (props) => {
     let relevantArticles = tickerNewsData.map((article) => {
         const { ticker_sentiment: tickerSentiments} = article;
         const relevantSentiment = tickerSentiments.find((sentiment) => 
-            sentiment.ticker === tickerName && parseFloat(sentiment.relevance_score) > .5
+            sentiment.ticker === tickerName && parseFloat(sentiment.relevance_score) > .4
         );
 
         if (relevantSentiment) {
