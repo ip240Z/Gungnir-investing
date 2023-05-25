@@ -46,8 +46,7 @@ let Overview = (props) => {
       
         return formattedNum;
       }
-    let marketCap = formatNum(`${overviewData.MarketCapitalization}`)
-    let float = formatNum(`${overviewData.SharesOutstanding}`)
+  
 
     return (
         <main className="overviewWrapper">
@@ -77,8 +76,8 @@ let Overview = (props) => {
                         <p>52 Week Low: ${overviewData["52WeekLow"]}</p>
                     </div>
                     <div className="nums">
-                        <p>Market Cap: ${marketCap}</p>
-                        <p>Float: {float}</p>
+                        <p>Market Cap: ${formatNum(`${overviewData.MarketCapitalization}`)}</p>
+                        <p>Float: {formatNum(`${overviewData.SharesOutstanding}`)}</p>
                     </div>
                 </article>
             </section>
