@@ -46,7 +46,7 @@ let Overview = (props) => {
       
         return formattedNum;
       }
-  
+  console.log(overviewData.CIK)
 
     return (
         <main className="overviewWrapper">
@@ -78,6 +78,7 @@ let Overview = (props) => {
                     <div className="nums">
                         <p>Market Cap: ${formatNum(`${overviewData.MarketCapitalization}`)}</p>
                         <p>Float: {formatNum(`${overviewData.SharesOutstanding}`)}</p>
+                        <a target={"_blank"} href={`https://react-www.onrender.com/`}><p>Recent Filings Here</p></a>
                     </div>
                 </article>
             </section>
