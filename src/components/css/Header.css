@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     width: 80%;
+    border-bottom: 2px solid #73C7E8;
 }
 
 .logoWrapper {

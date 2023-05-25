@@ -5,9 +5,9 @@
     padding: 10px;
     width: 95%;
     background-color: white;
-    border-right: 4px solid #73C7E8;
-    border-left: 4px solid #73C7E8;
-
+    border: 4px solid #73C7E8;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .contentWrapper {
     min-width: 100%;
