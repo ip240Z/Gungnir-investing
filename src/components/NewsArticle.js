@@ -43,7 +43,7 @@ let NewsArticle = (props) => {
 
     return (
         <article className="articleWrapper">
-            <a href={`${data.url}`} className="imgWrapper" >
+            <a target={"_blank"} href={`${data.url}`} className="imgWrapper" >
                 <section style={imgStyle} className="titleWrapper">
                 </section>
             </a>

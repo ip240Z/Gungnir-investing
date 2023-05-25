@@ -32,12 +32,12 @@ let FeaturedArticle = (props) => {
 
     return (
         <article className="featArtWrapper">
-            <a href={`${data.url}`} className="featImgWrapper">
+            <a target={"_blank"} href={`${data.url}`} className="featImgWrapper">
                 <div style={imgStyle} className="artImage" src={`url(${data.banner_image})`}/>
             </a>
             <section className="featInfoWrapper">
                 <span className="featTitle">
-                    <a className="featLink" href={`${data.url}`}>{data.title}</a>
+                    <a target={"_blank"} className="featLink" href={`${data.url}`}>{data.title}</a>
                 </span>
                 <p className="featSummary">
                     {data.summary}
