@@ -5,6 +5,7 @@ import "./css/StockBody.css"
 import "./css/TickerSearchForm.css"
 import { Link, Route, Routes } from "react-router-dom";
 import ChartComponent from "./ChartComponent";
+import Overview from "./Overview";
 import Header from "./Header";
 
 let StockBody = () => {
@@ -28,6 +29,9 @@ let StockBody = () => {
                     <Link className="navLink" to={`/chart/${tickerName}`}>
                         Chart
                     </Link>
+                    <Link className="navLink" to={`/overview/${tickerName}`} >
+                        Overview
+                    </Link>
                     <Link className="navLink" to={`/news/${tickerName}`} >
                         News
                     </Link>
@@ -35,7 +39,11 @@ let StockBody = () => {
             </header>
             <main className="contentWrapper">
                 <article>
-                    <Routes>    
+                    <Routes>
+                        <Route
+                        path={`/overview/${tickerName}`}
+                        element={<Overview tickerName={tickerName} />}
+                        />    
                         <Route
                         path={`/chart/${tickerName}`}
                         element={<ChartComponent chartData={chartData} />} 

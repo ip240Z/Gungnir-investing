@@ -5,8 +5,6 @@ import FeaturedArticle from "./FeaturedArticle";
 
 let ArticleSection = (props) => {
 
-    let APIKEY = process.env.REACT_APP_APIKEY
-
     let APIKEY2 = process.env.REACT_APP_APIKEY2
 
 

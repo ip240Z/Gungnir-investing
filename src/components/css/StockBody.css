@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     padding: 10px;
+    padding-bottom: 5px;
     width: 95%;
     background-color: white;
     border: 4px solid #73C7E8;
@@ -11,6 +12,7 @@
 }
 .contentWrapper {
     min-width: 100%;
+    margin-top: 15px;
 }
 .searchFormWrapper {
     width: 80%;
@@ -23,9 +25,9 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 5px;
-    align-items: center;
-
+    margin-top: 0px;
+    align-items: baseline;
+    flex-wrap: wrap;
 }
 
 /* .navLink:hover {
@@ -48,6 +50,7 @@
 .tickerDisplay {
     min-width: 50px;
     border-radius: 2px;
+    margin-bottom: 0px;
     font-weight: bolder;
     color: black;
     border: 1px solid grey;
