@@ -38,7 +38,7 @@ let ArticleSection = (props) => {
     let relevantArticles = tickerNewsData.map((article) => {
         const { ticker_sentiment: tickerSentiments} = article;
         const relevantSentiment = tickerSentiments.find((sentiment) => 
-            sentiment.ticker === tickerName && parseFloat(sentiment.relevance_score) > .5
+            sentiment.ticker === tickerName && parseFloat(sentiment.relevance_score) > .4
         );
 
         if (relevantSentiment) {

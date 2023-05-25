@@ -25,6 +25,30 @@ let Overview = (props) => {
         fetchData()
     }, []); 
 
+    let formatNum = (numStr) => {
+        let length = numStr.length;
+        let commas = Math.floor((length - 1) / 3);
+        let formattedNum = '';
+      
+        // Handle numbers larger than a trillion
+        if (commas > 3) {
+          for (let i = 1; i <= commas; i++) {
+            let startIndex = length - (i * 3);
+            let part = numStr.slice(startIndex, length - ((i - 1) * 3));
+            formattedNum = part + (formattedNum ? ',' + formattedNum : '');
+          }
+          formattedNum = numStr.slice(0, length - (commas * 3)) + ',' + formattedNum;
+        }
+        // Handle numbers up to a trillion
+        else {
+          formattedNum = numStr;
+        }
+      
+        return formattedNum;
+      }
+    let marketCap = formatNum(`${overviewData.MarketCapitalization}`)
+    let float = formatNum(`${overviewData.SharesOutstanding}`)
+
     return (
         <main className="overviewWrapper">
             <header className="header">
@@ -43,15 +67,18 @@ let Overview = (props) => {
                     <p className="desc">{overviewData.Description}</p>
                 </div>
                 <article className="numsWrapper">
-                    <div className="nums1">
-                        <p>Analyst Target Price: ${overviewData.AnalystTargetPrice}</p>
+                    <div className="nums">
                         <p>Earnings Per Share: ${overviewData.EPS}</p>
                         <p>Dividend Per Share: {overviewData.DividendPerShare}%</p>
                     </div>
-                    <div className="nums2">
+                    <div className="nums">
+                        <p>Analyst Target Price: ${overviewData.AnalystTargetPrice}</p>
                         <p>52 Week High: ${overviewData["52WeekHigh"]}</p>
                         <p>52 Week Low: ${overviewData["52WeekLow"]}</p>
-                        <p></p>
+                    </div>
+                    <div className="nums">
+                        <p>Market Cap: ${marketCap}</p>
+                        <p>Float: {float}</p>
                     </div>
                 </article>
             </section>

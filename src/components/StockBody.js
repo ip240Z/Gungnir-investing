@@ -38,7 +38,6 @@ let StockBody = () => {
                 </nav>
             </header>
             <main className="contentWrapper">
-                <article>
                     <Routes>
                         <Route
                         path={`/overview/${tickerName}`}
@@ -53,7 +52,7 @@ let StockBody = () => {
                         element={<ArticleSection tickerNewsData={tickerNewsData} tickerName={tickerName} passTickerNews={setTickerNews} />} 
                         />
                     </Routes>
-                </article>
+               
             </main>
         </section>
     )
