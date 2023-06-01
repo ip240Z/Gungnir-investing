@@ -1,8 +1,6 @@
 import './App.css';
 import StockBody from './components/StockBody';
-import NoMatch from './components/NoMatch';
 import { Routes, Route } from 'react-router-dom';
-import bgPic from "./mainBG.png"
 import logo from "./logo.png"
 
 

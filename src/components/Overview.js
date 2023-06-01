@@ -5,25 +5,27 @@ let Overview = (props) => {
 
     let APIKEY3 = process.env.REACT_APP_APIKEY3
 
-    const [tickerName, setTickerName] = useState(props.tickerName)
-    const [overviewData, setOverviewData] = useState('')
+    const [tickerName, setTickerName] = useState(props.tickerName);
+    const [overviewData, setOverviewData] = useState('');
+
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${tickerName}&apikey=${APIKEY3}`)
-                if (!response.ok) {
-                    throw new Error('Error fetching company overview')
-                }
-                const data = await response.json();
-                console.log('Company overview fetched', data);
-                setOverviewData(data)
-            } catch (error) {
-                console.log('An error occurred: ', error)
-            }
-        }
         fetchData()
     }, []); 
+    
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${tickerName}&apikey=${APIKEY3}`)
+            if (!response.ok) {
+                throw new Error('Error fetching company overview')
+            }
+            const data = await response.json();
+            console.log('Company overview fetched', data);
+            setOverviewData(data)
+        } catch (error) {
+            console.log('An error occurred: ', error)
+        }
+    }
 
     let formatNum = (numStr) => {
         let length = numStr.length;

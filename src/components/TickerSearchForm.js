@@ -5,8 +5,6 @@ let TickerSearchForm = (props) => {
 
     let APIKEY = process.env.REACT_APP_APIKEY
 
-    let APIKEY2 = process.env.REACT_APP_APIKEY2
-
     const [ticker, setTicker] = useState({tickerValue: ""})
 
     const [chartData, setChartData] = useState()
@@ -22,7 +20,6 @@ let TickerSearchForm = (props) => {
 
     useEffect(() => {
         if (chartData) {
-          console.log("Updated chart data:", chartData);
           passChartData(chartData);
         }
       }, [chartData]);

@@ -16,9 +16,6 @@ let StockBody = () => {
 
     const [chartData, setChartData] = useState();
 
-    console.log(chartData)
-    console.log(tickerName)
-
     return (
         <section className="mainRenderArea">
                 <Header />
