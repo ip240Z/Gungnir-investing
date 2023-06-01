@@ -1,5 +1,5 @@
 import './App.css';
-import StockBody from './components/StockBody';
+import StockBody from './components/MainRenderArea';
 import { Routes, Route } from 'react-router-dom';
 import logo from "./logo.png"
 

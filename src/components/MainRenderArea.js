@@ -1,7 +1,7 @@
 import TickerSearchForm from "./TickerSearchForm"
 import ArticleSection from "./ArticleSection";
 import React, { useState } from "react";
-import "./css/StockBody.css"
+import "./css/MainRenderArea.css"
 import "./css/TickerSearchForm.css"
 import { Link, Route, Routes } from "react-router-dom";
 import ChartComponent from "./ChartComponent";
